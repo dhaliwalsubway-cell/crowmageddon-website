@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08080d">
+  <meta name="description" content="Enter the Crowverse. One crowned crow. A chaotic universe. The flock is forming.">
+  <title>CROWmageddon — The Crowverse</title>
+  <style>
+    :root {
+      --bg: #08080d;
+      --panel: #11111a;
+      --white: #f7f7fb;
+      --muted: #a3a3b5;
+      --pink: #f044d7;
+      --cyan: #43e8f5;
+      --line: rgba(255,255,255,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1100px, 90%); margin: auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      font-weight: 900;
+      letter-spacing: .08em;
+      font-size: 1.05rem;
+    }
+    .brand span { color: var(--pink); }
+    nav { display: flex; gap: 24px; align-items: center; }
+    nav a { color: var(--muted); font-size: .9rem; }
+    nav a:hover { color: var(--cyan); }
+    .hero {
+      min-height: 660px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0;
+      isolation: isolate;
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: .2;
+      z-index: -1;
+    }
+    .hero::before { background: var(--pink); top: 10%; left: -180px; }
+    .hero::after { background: var(--cyan); bottom: 0; right: -180px; }
+    .eyebrow {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      font-size: .75rem;
+      font-weight: 800;
+    }
+    .crow {
+      font-size: clamp(5rem, 16vw, 10rem);
+      line-height: 1.2;
+      margin: 8px 0;
+      filter: drop-shadow(0 0 28px rgba(240,68,215,.22));
+    }
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 6.5rem);
+      line-height: .96;
+      letter-spacing: -.065em;
+      margin: 16px 0 24px;
+      font-weight: 950;
+    }
+    h1 span {
+      display: block;
+      color: var(--pink);
+      text-shadow: 0 0 32px rgba(240,68,215,.2);
+    }
+    .intro {
+      color: var(--muted);
+      max-width: 550px;
+      margin: 0 auto 30px;
+      font-size: 1.08rem;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .button {
+      display: inline-block;
+      padding: 13px 22px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: .9rem;
+      transition: transform .2s, border-color .2s;
+    }
+    .button:hover { transform: translateY(-2px); border-color: var(--cyan); }
+    .primary {
+      color: #09090d;
+      background: var(--pink);
+      border-color: var(--pink);
+    }
+    section { padding: 85px 0; }
+    .section-label {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: .72rem;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      margin: 12px 0 18px;
+    }
+    .copy { color: var(--muted); max-width: 680px; }
+    .story {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(120deg, rgba(240,68,215,.04), transparent 55%);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .card {
+      padding: 25px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .card .symbol { font-size: 1.8rem; }
+    .card h3 { margin: 12px 0 8px; }
+    .card p { color: var(--muted); font-size: .94rem; margin-bottom: 0; }
+    .community {
+      text-align: center;
+      background: radial-gradient(ellipse at center, rgba(67,232,245,.08), transparent 65%);
+    }
+    .community .copy { margin: 0 auto 28px; }
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+    }
+    .footrow {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 650px) {
+      nav { gap: 12px; }
+      nav a { font-size: .8rem; }
+      .hero { min-height: 570px; }
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 62px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="#home">CROW<span>mageddon</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#story">The Crowverse</a>
+      <a href="#community">Join the flock</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home">
+      <div>
+        <div class="eyebrow">A new universe is forming</div>
+        <div class="crow" aria-label="Crow">🐦‍⬛</div>
+        <h1>THE FLOCK <span>IS FORMING.</span></h1>
+        <p class="intro">
+          One crowned crow. A chaotic universe.
+          The memes are just beginning.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://x.com/CrowmageddonX"
+             target="_blank" rel="noopener noreferrer">FOLLOW THE CROW ↗</a>
+          <a class="button" href="#story">ENTER THE CROWVERSE ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="wrap">
+        <div class="section-label">01 / The origin</div>
+        <h2>Every universe needs<br>a troublemaker.</h2>
+        <p class="copy">
+          Ours wears a crooked crown. CROWmageddon is an original
+          meme-world built around a crowned crow, strange characters
+          and internet chaos. The story starts here, and the community
+          will help shape what comes next.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <div class="symbol">♛</div>
+            <h3>The Crown</h3>
+            <p>A crooked crown. An unmistakable character. No ordinary bird.</p>
+          </article>
+          <article class="card">
+            <div class="symbol">⚡</div>
+            <h3>The Chaos</h3>
+            <p>Original memes, unexpected twists and a universe of its own.</p>
+          </article>
+          <article class="card">
+            <div class="symbol">🐦‍⬛</div>
+            <h3>The Flock</h3>
+            <p>A community that can create, remix and share the Crowverse.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="community" id="community">
+      <div class="wrap">
+        <div class="section-label">02 / Your move</div>
+        <h2>The Crowverse<br>is just getting started.</h2>
+        <p class="copy">
+          Follow the story, share your ideas and help create the chaos.
+          No promises of riches. Just a crow with a crown and a world to build.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://x.com/CrowmageddonX"
+             target="_blank" rel="noopener noreferrer">JOIN US ON X ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footrow">
+      <span>© 2026 CROWmageddon · The Crowverse</span>
+      <span>An independent meme project. No investment returns are promised.</span>
+    </div>
+  </footer>
+</body>
+</html>
